@@ -1,0 +1,12 @@
+.pui-tooltip {
+    position: absolute;
+    padding: var(--pui-spacing-1-5x) var(--pui-spacing-3x);
+    max-width: 200px;
+    color: var(--pui-color-text);
+    background-color: var(--pui-color-bg);
+    border: var(--pui-border-width-m) solid var(--pui-color-border-secondary);
+    border-radius: var(--pui-border-radius-base);
+    box-shadow: var(--pui-shadow-bottom-s);
+    pointer-events: none;
+    z-index: 1000;
+}
