@@ -97,7 +97,6 @@ export class PuiTooltipBase implements OnDestroy {
     if (this._tooltipContainer) return;
 
     this._tooltipContainer = this.renderer.createElement('div');
-    this.renderer.addClass(this._tooltipContainer, 'pui-tooltip');
     this.renderer.setAttribute(this._tooltipContainer, 'tooltip-id', this._tooltipId);
 
     this.renderer.setStyle(this._tooltipContainer, 'position', 'absolute');
@@ -109,7 +108,6 @@ export class PuiTooltipBase implements OnDestroy {
       elementInjector: this.viewContainerRef.injector
     });
     this._tooltipContainerRef.instance.text = this.tooltipText;
-
     this._tooltipContainerRef.changeDetectorRef.detectChanges();
 
     this.renderer.appendChild(
@@ -169,10 +167,10 @@ export class PuiTooltipBase implements OnDestroy {
       (placement === 'bottom' ||
         placement === 'bottom-end' ||
         placement === 'bottom-start') &&
-      viewportHeight - (hostPositionRect.bottom - scrollPosition) <
+        viewportHeight - hostPositionRect.bottom <
         tooltipPositionRect.height + this.tooltipOffset
     ) {
-      top = hostPositionRect.top - tooltipPositionRect.height - this.tooltipOffset;
+      top = hostPositionRect.top - tooltipPositionRect.height - this.tooltipOffset + scrollPosition;
     }
 
     if (
@@ -182,7 +180,7 @@ export class PuiTooltipBase implements OnDestroy {
       hostPositionRect.top - scrollPosition <
         tooltipPositionRect.height + this.tooltipOffset
     ) {
-      top = hostPositionRect.bottom + this.tooltipOffset;
+      top = hostPositionRect.bottom + this.tooltipOffset + scrollPosition;
     }
 
     this.renderer.setStyle(this._tooltipContainer, 'top', `${top}px`);
@@ -268,22 +266,8 @@ export class PuiTooltipBase implements OnDestroy {
 @Component({
   selector: 'pui-tooltip',
   standalone: true,
-  template: `<div class="tooltip-content">{{ text }}</div>`,
-  styles: [`
-    :host {
-      display: block;
-    }
-
-    .tooltip-content {
-      padding: 8px 12px;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      border-radius: 4px;
-      font-size: 14px;
-      line-height: 1.4;
-      white-space: nowrap;
-    }
-  `],
+  templateUrl: './tooltip.component.html',
+  styleUrls:['./tooltip.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })

@@ -1,12 +1,26 @@
-.pui-tooltip {
-    position: absolute;
-    padding: var(--pui-spacing-1-5x) var(--pui-spacing-3x);
-    max-width: 200px;
-    color: var(--pui-color-text);
-    background-color: var(--pui-color-bg);
-    border: var(--pui-border-width-m) solid var(--pui-color-border-secondary);
-    border-radius: var(--pui-border-radius-base);
-    box-shadow: var(--pui-shadow-bottom-s);
-    pointer-events: none;
-    z-index: 1000;
-}
+// .pui-tooltip {
+//     position: absolute;
+//     padding: var(--pui-spacing-1-5x) var(--pui-spacing-3x);
+//     max-width: 200px;
+//     color: var(--pui-color-text);
+//     background-color: var(--pui-color-bg);
+//     border: var(--pui-border-width-m) solid var(--pui-color-border-secondary);
+//     border-radius: var(--pui-border-radius-base);
+//     box-shadow: var(--pui-shadow-bottom-s);
+//     pointer-events: none;
+//     z-index: 1000;
+// }
+
+:host {
+    display: block;
+  }
+
+  .tooltip-content {
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
