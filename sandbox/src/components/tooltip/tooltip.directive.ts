@@ -88,7 +88,7 @@ export class PuiTooltipDirective implements OnDestroy {
 
     this._hideTimeout = window.setTimeout(() => {
       this._hide();
-      PuiTooltipDirective.activeTooltips.delete(this._tooltipId);
+      
     }, this.tooltipHideDelay);
   }
 
@@ -118,6 +118,7 @@ export class PuiTooltipDirective implements OnDestroy {
       this._tooltipContainerRef.destroy();
       this._tooltipContainerRef = null;
     }
+    PuiTooltipDirective.activeTooltips.delete(this._tooltipId);
   }
 
   private _setPlacement(): void {
@@ -267,6 +268,5 @@ export class PuiTooltipDirective implements OnDestroy {
   ngOnDestroy(): void {
     this._destroyTimeouts();
     this._hide();
-    PuiTooltipDirective.activeTooltips.delete(this._tooltipId);
   }
 }
